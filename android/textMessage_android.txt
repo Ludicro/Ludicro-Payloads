@@ -1,0 +1,12 @@
+REM Opens text messages
+GUI S
+DELAY 5000
+
+REM Each TAB cycles a person
+TAB
+
+REM selects the person being messaged
+ENTER
+
+REM Message to send
+STRING This was sent from a Flipper Zero using a BadUSB script by Ludicro!
