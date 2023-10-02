@@ -1,5 +1,4 @@
-REM Just another rickroll payload but for android
-REM Credit: John Hickens
+REM using BT on Flipper Zero BadUSB, open a page to Luke Leveque's LinkedIn page on their web browser on Android devices
 
 GUI b 
 DELAY 600 
