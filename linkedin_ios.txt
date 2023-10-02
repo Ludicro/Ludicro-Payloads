@@ -1,13 +1,10 @@
-REM Version 1.0
 REM OS: iOS
-REM Author: Peaakss | Optimized for older versions by WillyJL
-REM Description: A simple payload that opens safari and inserts a link
-REM NOTICE CHANGE "STRING" to your desired link
+REM Description: Payload that opens safari and inserts a link to Luke Leveque's LinkedIn
 
 GUI h
-DELAY 420
+DELAY 500
 GUI SPACE
-DELAY 420
+DELAY 500
 STRING https://www.linkedin.com/in/luke-leveque-532615218/
-DELAY 69
+DELAY 30
 ENTER
