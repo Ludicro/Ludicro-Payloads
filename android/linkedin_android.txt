@@ -1,0 +1,14 @@
+REM OS: Android
+REM Description: Payload that opens moble web browser and inserts a link to Luke Leveque's LinkedIn
+
+GUI b 
+DELAY 600 
+ENTER 
+DELAY 1000 
+CTRL l 
+DELAY 100 
+STRING https://www.linkedin.com/in/luke-leveque-532615218/
+DELAY 100 
+ENTER
+DELAY 500
+STRING f
