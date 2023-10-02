@@ -1,4 +1,5 @@
-REM using BT on Flipper Zero BadUSB, open a page to Luke Leveque's LinkedIn page on their web browser on Android devices
+REM OS: Android
+REM Description: Payload that opens moble web browser and inserts a link to Luke Leveque's LinkedIn
 
 GUI b 
 DELAY 600 
