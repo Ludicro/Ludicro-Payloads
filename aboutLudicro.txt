@@ -1,3 +1,7 @@
+REM OS: Windows
+REM Author: Ludicro
+REM Opens github and linkedin pages after displaying a pop-up using powershell
+
 REM Minimize all
 GUI M
 DELAY 500
