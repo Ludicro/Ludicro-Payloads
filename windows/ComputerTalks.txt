@@ -7,6 +7,6 @@ WINDOWS d
 DELAY 950
 WINDOWS r
 DELAY 650
-STRING powershell.exe -nop -win hidden -c "Add-Type -AssemblyName System.speech; $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer; $synth.Speak('Hey Adam. Didn't learn your lesson about trusting connections did you?')"
+STRING powershell.exe -nop -win hidden -c "Add-Type -AssemblyName System.speech; $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer; $synth.Speak('Hey Adam, didn't learn your lesson about trusting connections did you?')"
 DELAY 100
 ENTER
