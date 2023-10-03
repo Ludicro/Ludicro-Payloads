@@ -1,0 +1,16 @@
+REM Open run
+CTRL R
+
+REM Open Microsoft Word
+STRING winword
+ENTER
+
+REM Navigates to "More Templates"
+TAB
+
+REM Navigates to Search bar
+TAB
+
+REM Find and open document
+STRING DocumentName
+ENTER

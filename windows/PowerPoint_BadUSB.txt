@@ -1,0 +1,27 @@
+REM Open run
+GUI R
+DELAY 200
+
+REM powerpnt: Open PowerPoint
+STRING powerpnt
+ENTER
+DELAY 2000
+
+REM Navigates to "More Themes"
+TAB
+DELAY 500
+
+REM Navigates to Search bar
+TAB
+DELAY 500
+
+REM Find and open document
+STRING ACM
+ENTER
+DELAY 1000
+
+REM Go to Slide Show tab
+ALT S
+DELAY 500
+
+STRING B
