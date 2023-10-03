@@ -10,4 +10,7 @@ ENTER
 
 REM Message to send
 STRING This message was sent from a Flipper Zero using a BadUSB script by Ludicro!
+TAB
+TAB
+DELAY 200
 ENTER
