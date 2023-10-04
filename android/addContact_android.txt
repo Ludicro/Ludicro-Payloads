@@ -4,42 +4,34 @@ REM Desc: Adds a custom contact to an android Phone
 REM Usage: Change information to desired and plug and play
 REM Pre-Conditions: Phone must be unlocked and not have contacts open in the background
 
+DEFAULT_DELAY 200
+
 REM Opens Contacts
 GUI C
-DELAY 200
 
 REM Goes to menu button
 TAB
-DELAY 500
 
 REM Goes to New Contact Butten and clicks
 TAB
-DELAY 500
 ENTER
 REM MUST DELAY HERE TO AVOID SELECTING ACCOUNT
-DELAY 2000
+DELAY 1000
 
 REM Enters name
 STRING Ludicro
-DELAY 500
 
 REM Moves to Name Dropdown Menu
 TAB
-DELAY 500
 
 REM Moves to Phone Number and selects
 TAB
-DELAY 500
 ENTER
-DELAY 500
 TAB
-DELAY 500
 ENTER
-DELAY 500
 
 REM Enters Phone Number
 STRING 1234567890
-DELAY 500
 
 REM Moves to Remove Number button
 TAB
@@ -47,15 +39,11 @@ DELAY 500
 
 REM Moves to Add Additional Number box
 TAB
-DELAY 500
 
 REM Move to Email
 TAB
-DELAY 500
 ENTER
-DELAY 500
 TAB
-DELAY 500
 
 REM Remove the next 3 blocks if you do not want an email to be added (untested)
 REM Enters Email Address
@@ -63,25 +51,19 @@ STRING fake.email@domain.com
 
 REM Moves to Remove Email button
 TAB
-DELAY 500
 
 REM Moves to Add Additional Email box
 TAB
-DELAY 500
 
 REM Moves to Groups
 TAB
-DELAY 500
 
 REM Moves to View More button
 TAB
-DELAY 500
 
 REM Moves to cancel button
 TAB
-DELAY 500
 
 REM Moves to Save button and selects
 TAB
-DELAY 500
 ENTER
