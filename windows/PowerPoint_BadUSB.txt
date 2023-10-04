@@ -1,3 +1,7 @@
+REM Author: Ludicro
+REM OS: Windows
+REM Desc: Opens Powerpoint, find the desired document name and starts the presentation
+
 REM Open run
 GUI R
 DELAY 200
@@ -16,7 +20,7 @@ TAB
 DELAY 500
 
 REM Find and open document
-STRING ACM
+STRING PresentationName
 ENTER
 DELAY 1000
 

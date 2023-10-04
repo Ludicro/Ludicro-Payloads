@@ -1,0 +1,11 @@
+REM Author: Ludicro
+REM OS: iOS
+REM Description: Payload that opens safari and inserts a link to desired url
+
+GUI h
+DELAY 500
+GUI SPACE
+DELAY 500
+STRING URL HERE
+DELAY 30
+ENTER

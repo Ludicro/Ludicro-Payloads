@@ -1,3 +1,7 @@
+REM Author: Ludicro
+REM OS: Windows
+REM Desc: Opens Microsoft Word and opens desired document
+
 REM Open run
 CTRL R
 

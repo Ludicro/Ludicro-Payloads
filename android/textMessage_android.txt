@@ -1,3 +1,5 @@
+REM Author: Ludicro
+REM OS: Android
 REM Opens text messages
 GUI S
 DELAY 5000
