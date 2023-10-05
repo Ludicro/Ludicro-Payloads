@@ -36,9 +36,9 @@ STRING $ButtonType = [System.Windows.MessageBoxButton]::OK
 ENTER 
 STRING $MessageIcon = [System.Windows.MessageBoxImage]::Information
 ENTER
-STRING $MessageBody = "Did You Know?"
+STRING $MessageBody = "This was created by Ludicro for the Flipper Zero!"
 ENTER 
-STRING $MessageTitle = "This was created by Ludicro for the Flipper Zero!"
+STRING $MessageTitle = "Did You Know?"
 ENTER
 
 REM Clear powershell terminal
