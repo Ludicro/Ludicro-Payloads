@@ -32,13 +32,13 @@ ENTER
 REM Give pop-up
 STRING Add-Type -AssemblyName PresentationCore,PresentationFramework
 ENTER
-STRING $ButtonType = [System.Windows.MessageBoxButton]::YesNo
+STRING $ButtonType = [System.Windows.MessageBoxButton]::OK
 ENTER 
 STRING $MessageIcon = [System.Windows.MessageBoxImage]::Information
 ENTER
-STRING $MessageBody = "Learned Your Lesson?"
+STRING $MessageBody = "Did You Know?"
 ENTER 
-STRING $MessageTitle = "Don't use random connections!"
+STRING $MessageTitle = "This was created by Ludicro for the Flipper Zero!"
 ENTER
 
 REM Clear powershell terminal
