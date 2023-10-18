@@ -1,3 +1,7 @@
+# Collection of BadUSB scripts for Android OS
+
+Majority of these scripts were developed for the UI of the Samsung Galaxy series devices.
+
 # Non-Specific Commands
 
 REM Hovers next clickable item  
