@@ -25,7 +25,7 @@ Usage:
 1. Change the name being searched for
 2. Run
 
-##Pranks
+## Pranks
 
 ### ComputerTalks_windows.txt
 Description:
