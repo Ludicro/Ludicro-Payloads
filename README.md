@@ -1,5 +1,5 @@
 # Ludicro-BadUSB
-This is a collection of my scripts, primarily used for Flipper Zero BadUSB.
+This is a collection of my payloads, used for Hak5 tools and the FlipperZero
 
 DISCLAIMER: I did not create every script in this repo, the comment header in each script should silll have the original author. If it does not say Ludicro, then it is not mine, all credit is due to the original author(s).
 
