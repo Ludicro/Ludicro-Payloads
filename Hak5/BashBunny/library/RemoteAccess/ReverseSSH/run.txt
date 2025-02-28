@@ -24,7 +24,7 @@ LOOTDIR='/root/udisk/loot/ssh_rshell'
 # Shell Config
 RHOST=127.0.0.1
 RPORT=4444
-USE_CF=true # Set to false if you don't want to use cloudflare
+USE_CF=true
 
 # Start Setup
 LED SETUP
