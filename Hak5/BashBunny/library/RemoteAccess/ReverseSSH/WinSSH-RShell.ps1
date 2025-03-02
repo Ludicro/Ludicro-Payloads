@@ -1,7 +1,9 @@
 $H = $args[0]
 $P = $args[1]
 $UseCF = $args[2]
+$K = $args[3]
 $SP = $MyInvocation.MyCommand.Path
+
 
 # Enable OpenSSH client
 Add-WindowsCapability -Online -Name OpenSSH.Client* | Out-Null
@@ -21,6 +23,9 @@ if ($UseCF -eq "true") {
     Set-Content -Path "$env:USERPROFILE\.ssh\config" -Value $sshConfig
 }
 
+# Setup authorized key
+New-Item -Path "$env:USERPROFILE\.ssh" -ItemType Directory -Force
+Add-Content -Path "$env:USERPROFILE\.ssh\authorized_keys" -Value $K
 
 # Start reverse SSH tunnel in background
 Start-Job -ScriptBlock {
