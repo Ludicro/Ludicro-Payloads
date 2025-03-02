@@ -33,5 +33,4 @@ Start-Job -ScriptBlock {
     ssh -R ${P}:localH:22 $H -N
 } -ArgumentList $H, $P
 
-# Remove the script
-Remove-Item -Path $SP -Force
+
