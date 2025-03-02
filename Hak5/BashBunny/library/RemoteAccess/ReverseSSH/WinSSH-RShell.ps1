@@ -4,6 +4,8 @@ $UseCF = $args[2]
 $K = $args[3]
 $SP = $MyInvocation.MyCommand.Path
 
+$U = "sshtunneluser"
+
 
 # Enable OpenSSH client
 Add-WindowsCapability -Online -Name OpenSSH.Client* | Out-Null
@@ -30,7 +32,7 @@ Add-Content -Path "$env:USERPROFILE\.ssh\authorized_keys" -Value $K
 # Start reverse SSH tunnel in background
 Start-Job -ScriptBlock {
     param($H, $P)
-    ssh -R ${P}:localH:22 $H -N
+    ssh -R ${P}:localH:22 $U@$H -N
 } -ArgumentList $H, $P
 
 
